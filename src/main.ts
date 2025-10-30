@@ -70,8 +70,6 @@ Deno.serve(
             return new Response("Bad Request", { status: 400 });
           }
 
-          console.log("Resolving URL:", stream_url);
-
           try {
             const deciphered = await player.decipher(stream_url);
             const resolveUrlResponse: ResolveUrlResponse = {
