@@ -1,4 +1,5 @@
 import { Innertube } from "youtubei.js";
+import { JsAnalyzer, JsExtractor, JsHelpers, JsMatchers } from "youtubei.js";
 import { DecryptSignatureReq, PossibleBody, ResolveUrlReq, SigTimestampReq } from "../types.d.ts";
 const innertube = await Innertube.create({});
 
@@ -12,6 +13,9 @@ Deno.serve({ port: 8001 }, async (req) => {
     const pathname = url.pathname;
 
     const jsCode = await (await fetch(data.player_url)).text();
+
+    const jsAnalyzer = new JsAnalyzer(jsCode);
+    const jsExtractor = new JsExtractor(jsAnalyzer);
 
     switch (pathname) {
       case "/decrypt_signature": {
