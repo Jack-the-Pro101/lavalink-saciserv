@@ -20,9 +20,9 @@ export interface SigTimestampRes {
 export interface ResolveUrlReq {
   stream_url: string;
   player_url: string;
-  encrypted_signature: string;
-  signature_key: string;
-  n_param: string;
+  encrypted_signature?: string;
+  signature_key?: string;
+  n_param?: string;
 }
 
 export interface ResolveUrlRes {
