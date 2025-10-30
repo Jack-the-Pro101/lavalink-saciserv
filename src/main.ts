@@ -1,24 +1,32 @@
 import { Innertube } from "youtubei.js";
+import { DecryptSignatureReq, PossibleBody, ResolveUrlReq, SigTimestampReq } from "../types.d.ts";
 const innertube = await Innertube.create({});
 
 Deno.serve({ port: 8001 }, async (req) => {
   if (req.method !== "POST") return new Response("Method Not Allowed", { status: 405 });
-  if (req.body == null) return new Response("Empty body", { status: 400 });
 
   try {
-    const data = await req.json();
+    const data = (await req.json()) as PossibleBody;
 
     const url = new URL(req.url);
     const pathname = url.pathname;
 
+    const jsCode = await (await fetch(data.player_url)).text();
+
     switch (pathname) {
       case "/decrypt_signature": {
+        const { encrypted_signature, n_param, player_url } = data as DecryptSignatureReq;
+
         break;
       }
       case "/get_sts": {
+        const { player_url } = data as SigTimestampReq;
+
         break;
       }
       case "/resolve_url": {
+        const { stream_url, encrypted_signature, signature_key, n_param } = data as ResolveUrlReq;
+
         break;
       }
       default:

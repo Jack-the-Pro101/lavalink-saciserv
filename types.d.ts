@@ -28,3 +28,5 @@ export interface ResolveUrlReq {
 export interface ResolveUrlRes {
   resolved_url: string;
 }
+
+export type PossibleBody = DecryptSignatureReq | SigTimestampReq | ResolveUrlReq;
