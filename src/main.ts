@@ -1,5 +1,3 @@
-// import { JsAnalyzer, JsExtractor } from "youtubei.js";
-
 import { DecryptSignatureReq, DecryptSignatureRes, PossibleBody, ResolveUrlReq, SigTimestampReq } from "../types.d.ts";
 import { DecryptExports, getPlayer, GetStsResponse, ResolveUrlResponse } from "./decrypter.ts";
 
