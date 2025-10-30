@@ -56,8 +56,6 @@ export interface DecryptExports {
 export const getPlayer = async (playerUrl: string): Promise<Player> => {
   let player = playerCache.get(playerUrl);
 
-  console.log("Fetching player for URL:", playerUrl);
-
   if (!player) {
     const playerId = Utils.getStringBetweenStrings(playerUrl, "player/", "/");
 
